@@ -2,7 +2,7 @@
     {% for post in post_list %}
     
         
-        <p> {{ pitch.pitch | truncate(30) }}</p>
+        <p> {{ post.post | truncate(30) }}</p>
     
     {% endfor %}
 {% endmacro %}
