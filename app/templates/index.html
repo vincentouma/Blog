@@ -1,40 +1,42 @@
-
 {% extends 'base.html'%} {% import 'macros.html' as macro%}{% import "bootstrap/wtf.html" as wtf %}
 
 
 
-        {% block styles%}
-        {{ super() }}
-        <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
-        {% endblock %}
-        
+{% block styles%}
+{{ super() }}
+<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+{% endblock %}
 
-    {% block content %}
 
-    <div class="well">
-        <h1 > WELCOME  TO MY BLOG !!</h1>
+{% block content %}
+<div class="container">
+
+    <div class="head">
+        <h1> WELCOME TO BRAIN WAVE CAFE</h1>
+        <h3>BELONG: BELIEVE: BECOME:</h3>
+        <p>Blog out the most of your deeply thuoght idea and also expirience other peoples ideas dont forget to comment.</p>
 
     </div>
     <div class="container">
-        <h3 style="text-align:center">Choose to view or post a blog.</h3>
-        <nav class="navbar navbar-default" role="navigation" style="text-align:center;">
+      
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse" id="pro">
-                <ul class="nav navbar-nav navbar-right">
-                    <li ><a href="/pitch">Education</a></li>
-                    <li ><a href="/product">Health</a></li>
-                    <li><a href="/interview">Technology</a></li>
-                    <li><a href="/promotion">Science</a></li>
-
-                </ul>
+        <section>
+            <div class="conatiner">
+                <div class="row align-items-center" style="text-align:center;justify-content:center;">
+                   
+                    <div class="col-md-5">
+                        <div class="card-body card-body-cascade text-center" style="border:2px solid #222;border-radius: 5px;box-shadow: 5px 10px #888888;margin-bottom: 10px;">
+                            <h3 class="h3-responsive">{{quote.quote}}</h3>
+                            <h5>~ {{quote.author}}</h5>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </nav>
-
+        </section>
 
 
         <div id="category">
-            <h2>Welcome to Blog</h2>
+            <h2>Be Part Of The Journey</h2>
             <a class="btn btn-primary text-center " href="{{url_for('main.new_post')}}"><span ></span> Add Blog Post</a>
             <hr>
           
@@ -42,9 +44,9 @@
           
             {% for post in posts %}
             <div class="panel panel-primary">
-                <div class="panel-heading">
+                <!-- <div class="panel-heading">
                   <h3 class="panel-title">{{post.post_title}}</h3>
-                </div>
+                </div> -->
                 <div class="panel-body">
                     <p class='firstletter'>{{post.post_text}}</p>
                 </div>
@@ -60,6 +62,6 @@
                 {%endif%}
             </div>
             {% endfor %}
-          
-          {% endblock %}
-          
+        </div>
+    </div>
+        {% endblock %}
