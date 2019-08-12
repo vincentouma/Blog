@@ -1,67 +1,79 @@
-{% extends 'base.html'%} {% import 'macros.html' as macro%}{% import "bootstrap/wtf.html" as wtf %}
+<div
+    style="background-image: url('https://images.unsplash.com/reserve/YEc7WB6ASDydBTw6GDlF_antalya-beach-lulu.jpg?ixlib=rb-1.2.1&auto=format&fit=crop&w=863&q=80'); background-size: cover; background-repeat: no-repeat;">
+    {% extends 'base.html'%} {% import 'macros.html' as macro%}{% import "bootstrap/wtf.html" as wtf %}
 
 
 
-{% block styles%}
-{{ super() }}
-<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
-{% endblock %}
+    {% block styles%}
+    {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}">
+    {% endblock %}
 
 
-{% block content %}
-<div class="container">
-
-    <div class="head">
-        <h1> WELCOME TO BRAIN WAVE CAFE</h1>
-        <h3>BELONG: BELIEVE: BECOME:</h3>
-        <p>Blog out the most of your deeply thuoght idea and also expirience other peoples ideas dont forget to comment.</p>
-
-    </div>
+    {% block content %}
     <div class="container">
-      
 
-        <section>
-            <div class="conatiner">
-                <div class="row align-items-center" style="text-align:center;justify-content:center;">
-                   
-                    <div class="col-md-5">
-                        <div class="card-body card-body-cascade text-center" style="border:2px solid #222;border-radius: 5px;box-shadow: 5px 10px #888888;margin-bottom: 10px;">
-                            <h3 class="h3-responsive">{{quote.quote}}</h3>
-                            <h5>~ {{quote.author}}</h5>
+        <div class="head">
+            <h1> WELCOME TO BRAIN WAVE CAFE</h1>
+            <h3>BELONG: BELIEVE: BECOME:</h3>
+            <p>Blog out the most of your deeply thuoght idea and also expirience other peoples ideas dont forget to
+                comment.</p>
+
+        </div>
+        <div class="container">
+
+
+            <section>
+                <div class="conatiner">
+                    <div class="row align-items-center" style="text-align:center;justify-content:center; ">
+
+                        <div class="col-md-5">
+                            <div class="card-body card-body-cascade text-center"
+                                style="border:2px solid #222;border-radius: 5px;box-shadow: 5px 10px #888888;margin-bottom: 10px; background-color: white;">
+
+                                <marquee behavior="scroll" direction="down" scrollamount="1">
+                                    {{quote.quote}}</marquee>
+
+                                <h4>~ {{quote.author}}</h4>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
 
-        <div id="category">
-            <h2>Be Part Of The Journey</h2>
-            <a class="btn btn-primary text-center " href="{{url_for('main.new_post')}}"><span ></span> Add Blog Post</a>
-            <hr>
-          
-            <h3> Posts Available:</h3>
-          
-            {% for post in posts %}
-            <div class="panel panel-primary">
-                <!-- <div class="panel-heading">
-                  <h3 class="panel-title">{{post.post_title}}</h3>
-                </div> -->
-                <div class="panel-body">
-                    <p class='firstletter'>{{post.post_text}}</p>
+            <div id="category">
+                <h2>Be Part Of The Journey</h2>
+                <a class="btn btn-primary text-center " href="{{url_for('main.new_post')}}"><span></span> Add Blog
+                    Post</a>
+                <hr>
+
+                <h3> Posts Available:</h3>
+
+                {% for post in posts %}
+                <div class="panel panel-primary">
+
+                    <div class="panel-body">
+                        <p class='firstletter'>{{post.post_text}}</p>
+                    </div>
+                    {% if current_user.is_authenticated %}
+                    <div class="panel-footer">
+                        <a class="btn btn-success text-center" href="{{url_for('main.view_post', id=post.id)}}">View
+                            Comments</a>
+                        <a class="btn btn-warning text-center" href="{{url_for('main.update_post', id=post.id)}}">Update
+                            Post</a>
+                        <a class="btn btn-danger text-center" href="{{url_for('main.delete_post', id=post.id)}}">Delete
+                            Post</a>
+                    </div>
+
+                    {% else %}
+                    <div class="panel-footer"><a class="btn btn-primary text-center"
+                            href="{{url_for('main.view_post', id=post.id)}}">View Comments</a></div>
+                    {%endif%}
                 </div>
-                {% if current_user.is_authenticated %}
-                <div class="panel-footer">
-                  <a class="btn btn-success text-center" href="{{url_for('main.view_post', id=post.id)}}">View Comments</a>
-                  <a class="btn btn-warning text-center" href="{{url_for('main.update_post', id=post.id)}}">Update Post</a>
-                  <a class="btn btn-danger text-center" href="{{url_for('main.delete_post', id=post.id)}}">Delete Post</a>
-                </div>
-              
-                {% else %}
-                <div class="panel-footer"><a class="btn btn-primary text-center" href="{{url_for('main.view_post', id=post.id)}}">View Comments</a></div>
-                {%endif%}
+                {% endfor %}
             </div>
-            {% endfor %}
-        </div>
+        
     </div>
         {% endblock %}
+    </div>
