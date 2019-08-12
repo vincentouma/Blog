@@ -4,7 +4,8 @@ from .forms import PostForm, CommentForm, UpdateProfile, SubscribeForm
 from ..models import User, Post, Comment, Subscriber
 from flask_login import login_required, current_user
 from .. import db, photos
-from .. email import mail_message
+from .. request import get_quote
+#from .. email import mail_message
 
 
 @main.route('/')
@@ -12,8 +13,9 @@ def index():
   
   title = 'Home - Welcome to Blog Post'
   posts = Post.get_posts()
+  quote = get_quote()
 
-  return render_template('index.html', title = title, posts = posts)
+  return render_template('index.html', title = title, posts = posts, quote = quote)
 
 
 @main.route('/post/new', methods = ['GET','POST']) 
@@ -35,7 +37,7 @@ def new_post():
     return redirect(url_for('.index'))
 
   title = 'New Post'
-  return render_template('new_posts.html', title= title, form= form)
+  return render_template('new_post.html', title= title, form= form)
 
 
 @main.route('/post/comments/new/<int:id>', methods = ['GET', 'POST'])
@@ -95,10 +97,10 @@ def update_post(id):
         post.post_text=form.post.data
         post.save_post()
 
-        return redirect(url_for('.index'))
+        return redirect(url_for('main.index'))
 
     title = 'Update Post'
-    return render_template('new_posts.html', title= title, form= form)
+    return render_template('new_post.html', title= title, form= form)
 
 
 @main.route('/subscribe',methods = ["GET","POST"])
@@ -111,7 +113,7 @@ def subscribe():
 
         mail_message("Welcome To Blog post","email/sub",user.email,user=user)
 
-        return redirect(url_for('.index'))
+        return redirect(url_for('main.index'))
     title = "New Subscription"
     return render_template('subscribe.html',form = form, title= title)
 
