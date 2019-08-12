@@ -6,7 +6,7 @@ class Config:
     UPLOADED_PHOTOS_DEST = 'app/static/photos'
 
     #database
-    SQLALCHEMY_DATABASE_URI = ''
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa :vinceobindi1005@localhost/post'
 
 
     #set email configurations
@@ -18,11 +18,10 @@ class Config:
 
 
 class ProdConfig(Config):
-
-    pass
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:vinceobindi1005@localhost/post'
 
 class DevConfig(Config):
-
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:vinceobindi1005@localhost/post'
     DEBUG=True
 
 
