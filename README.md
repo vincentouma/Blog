@@ -27,14 +27,25 @@ This is an application that allows users to make blogs,comment and view the  ava
 | Create a post | **Click On Add a Blog Post** | The authenticated user is navigated to the blog form to fill in |
 | Comment on a post | **Click Comment** | User navigates to the comment form  |
 
-## Setup/Installation Requirements
+### Prerequisites
+This web application requires the following software tools to operate
+-Python version 3.6
+-Flask
+-Pip
+-virtualenv
+-A text  Editor
+-SQLALCHEMY/Database
+## Getting Started
+* Clone this repository to your local computer.
+* Ensure you have python3.6 installed in your computer.
+* From the terminal navigate to the cloned project folder.
+* Create a virtual environment and access the folder via your virtual machine
+ 
+ * run python3.6 manage.py server on the project directory
+* Run ```chmod +x start.sh``` followed by ``` ./start.sh ``` while in the project folder to start the project.
+* Once started, the project can be accessed on your localhost using the address: ``` localhost:5000 ```.
+* This application can also be accessed by clicking the following link: 
 
-* Copy the link provided in  https://github.com/vincentouma/Blog to the browser of your choice.
-* Load the page and enjoy the blog app.
-_*This requires internet connection._*
-
-# Running Tests
-* python3.6 manage.py test
 
 
 
