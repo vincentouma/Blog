@@ -36,7 +36,7 @@ This web application requires the following software tools to operate
 -A text  Editor
 -SQLALCHEMY/Database
 ## Getting Started
-* Clone this repository to your local computer.
+* Clone https://github.com/vincentouma/Blog.git  to your local computer.
 * Ensure you have python3.6 installed in your computer.
 * From the terminal navigate to the cloned project folder.
 * Create a virtual environment and access the folder via your virtual machine
@@ -44,7 +44,7 @@ This web application requires the following software tools to operate
  * run python3.6 manage.py server on the project directory
 * Run ```chmod +x start.sh``` followed by ``` ./start.sh ``` while in the project folder to start the project.
 * Once started, the project can be accessed on your localhost using the address: ``` localhost:5000 ```.
-* This application can also be accessed by clicking the following link: 
+* This application can also be accessed by clicking the following link: https://vinny-blog.herokuapp.com 
 
 
 
