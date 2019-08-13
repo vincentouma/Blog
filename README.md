@@ -46,8 +46,8 @@ This web application requires the following software tools to operate
 * Once started, the project can be accessed on your localhost using the address: ``` localhost:5000 ```.
 * This application can also be accessed by clicking the following link: https://vinny-blog.herokuapp.com 
 
-### Known Bugs.
-# If you sign up to the application you upon submiting the sign up form an internal server error is displayed but the sign up process is complete and registered to database . if you sign in using the same email and password you used to sign up you will be succefully signed in.
+## Known Bugs.
+### If you sign up to the application, upon submiting the sign up form an internal server error is displayed but the sign up process is complete and registered to database . if you sign in using the same email and password you used to sign up you will be succefully signed in.
 
 
 ## Technologies Used
